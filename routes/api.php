@@ -21,5 +21,7 @@ Route::prefix('customer')->group(function () {
     Route::post('/login', [AuthController::class, 'login', ['as' => 'customer']]);
     Route::group(['middleware' => 'auth:api_customer'], function () {
         Route::get('/user', [AuthController::class, 'getUser', ['as' => 'customer']]);
+        Route::get('/refresh', [AuthController::class, 'refershToken', ['as' => 'customer']]);
+        Route::post('/logout', [AuthController::class, 'logout', ['as' => 'customer']]);
     });
 });
